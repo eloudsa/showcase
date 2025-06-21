@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:showcase/features/tutorial/application/tutorial_provider.dart';
 import 'package:showcase/features/home/application/navigation_provider.dart';
+import 'package:showcase/features/tutorial/presentation/widgets/skip_tutorial_button.dart';
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
@@ -160,7 +161,6 @@ TutorialCoachMark _createHomeTutorial(
   tutorial = TutorialCoachMark(
     targets: targets,
     colorShadow: Colors.blueAccent,
-    textSkip: "SKIP",
     paddingFocus: 5,
     opacityShadow: 0.8,
     onFinish: () {
@@ -172,6 +172,7 @@ TutorialCoachMark _createHomeTutorial(
       ref.read(tutorialProvider.notifier).clear();
       return true;
     },
+    skipWidget: buildSkipTutorialButton(onSkip: () => tutorial.skip()),
     onClickTargetWithTapPosition: (target, tapDetails) {
       tutorial.next();
     },

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:showcase/features/tutorial/application/tutorial_provider.dart';
+import 'package:showcase/features/tutorial/presentation/widgets/skip_tutorial_button.dart';
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
 
 class FormPage extends ConsumerStatefulWidget {
@@ -125,13 +126,17 @@ TutorialCoachMark _createFormTutorial(
   tutorial = TutorialCoachMark(
     targets: targets,
     colorShadow: Colors.deepPurple,
-    textSkip: "SKIP",
     paddingFocus: 5,
-    onFinish: () => ref.read(tutorialProvider.notifier).clear(),
+    onFinish: () {
+      ref.read(tutorialRunningProvider.notifier).stop();
+      ref.read(tutorialProvider.notifier).clear();
+    },
     onSkip: () {
+      ref.read(tutorialRunningProvider.notifier).stop();
       ref.read(tutorialProvider.notifier).clear();
       return true;
     },
+    skipWidget: buildSkipTutorialButton(onSkip: () => tutorial.skip()),
     onClickTargetWithTapPosition: (target, tapDetails) {
       if (target.identify == 'field') {
         scrollController.animateTo(
