@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:showcase/core/tutorial_provider.dart';
+import 'package:showcase/features/tutorial/application/tutorial_provider.dart';
 import 'package:showcase/features/home/application/navigation_provider.dart';
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
 
