@@ -1,6 +1,6 @@
-# Flutter Showcase: Modern App Architecture
+# Flutter Showcase
 
-This project is a showcase of modern Flutter application architecture, demonstrating best practices for building scalable, maintainable, and user-friendly apps. It serves as a practical reference for implementing Clean Architecture, advanced state management with Riverpod, and interactive user onboarding.
+This project is a showcase of Flutter application architecture, demonstrating best practices for building scalable, maintainable, and user-friendly apps. It serves as a practical reference to implement Clean Architecture, advanced state management with Riverpod, and interactive user onboarding.
 
 ## Key Features & Concepts
 
@@ -8,7 +8,7 @@ This project is a showcase of modern Flutter application architecture, demonstra
   - **/application**: Business logic and state management (Riverpod providers).
   - **/presentation**: UI components (Widgets and Screens).
 - **State Management with Riverpod**: Leverages `flutter_riverpod` (v2) with `riverpod_generator` for a type-safe, compile-time checked, and scalable state management solution.
-- **Interactive User Tutorial**: Implements a multi-step, interactive tutorial using the `tutorial_coach_mark` package to guide users through the app's features upon first launch.
+- **Interactive User Tutorial**: Implements a multistep, interactive tutorial using the `tutorial_coach_mark` package to guide users through the app's features upon first launch.
 - **Declarative Routing**: Uses `go_router` for a robust, URL-based navigation system that includes a `ShellRoute` to persist UI elements like the bottom navigation bar.
 
 ## Getting Started
