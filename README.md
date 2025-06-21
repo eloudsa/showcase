@@ -1,47 +1,42 @@
-# showcase
+# Flutter Showcase: Modern App Architecture
 
-A new Flutter project.
+This project is a showcase of modern Flutter application architecture, demonstrating best practices for building scalable, maintainable, and user-friendly apps. It serves as a practical reference for implementing Clean Architecture, advanced state management with Riverpod, and interactive user onboarding.
+
+## Key Features & Concepts
+
+- **Clean Architecture**: The codebase is organized by feature modules (`/lib/features`), separating concerns into distinct layers:
+  - **/application**: Business logic and state management (Riverpod providers).
+  - **/presentation**: UI components (Widgets and Screens).
+- **State Management with Riverpod**: Leverages `flutter_riverpod` (v2) with `riverpod_generator` for a type-safe, compile-time checked, and scalable state management solution.
+- **Interactive User Tutorial**: Implements a multi-step, interactive tutorial using the `tutorial_coach_mark` package to guide users through the app's features upon first launch.
+- **Declarative Routing**: Uses `go_router` for a robust, URL-based navigation system that includes a `ShellRoute` to persist UI elements like the bottom navigation bar.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+To get this project up and running, follow these steps.
 
-A few resources to get you started if this is your first Flutter project:
+### 1. Install Dependencies
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+```sh
+flutter pub get
+```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### 2. Run Code Generation
 
-## Project Structure
-
-This project follows the principles of Clean Architecture, organizing code by feature. Each feature is located under the `lib/features` directory and is divided into layers:
-
-- **/application**: Contains the business logic and state management (e.g., Riverpod providers).
-- **/presentation**: Contains the UI widgets and screens.
-
-This structure helps to keep the code organized, scalable, and easy to maintain.
-
-## Code Generation
-
-This project uses Riverpod for state management, which requires code generation for providers.
-
-Before running the app, you need to generate the necessary files. You can do this in two ways:
-
-### 1. Watch for changes
-
-For development, it's recommended to run the watcher. It will automatically regenerate files whenever you save a change in a provider file.
+This project uses `build_runner` to generate code for Riverpod providers. For development, it's highly recommended to run the watcher, which automatically regenerates files on save.
 
 ```sh
 flutter pub run build_runner watch --delete-conflicting-outputs
 ```
 
-### 2. Manual build
-
-If you prefer to generate the code manually, run the following command:
+Alternatively, you can run a one-time build:
 
 ```sh
 flutter pub run build_runner build --delete-conflicting-outputs
+```
+
+### 3. Run the App
+
+```sh
+flutter run
 ```
