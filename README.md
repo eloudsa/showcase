@@ -26,13 +26,13 @@ flutter pub get
 This project uses `build_runner` to generate code for Riverpod providers. For development, it's highly recommended to run the watcher, which automatically regenerates files on save.
 
 ```sh
-flutter pub run build_runner watch --delete-conflicting-outputs
+dart run build_runner watch --delete-conflicting-outputs
 ```
 
 Alternatively, you can run a one-time build:
 
 ```sh
-flutter pub run build_runner build --delete-conflicting-outputs
+dart run build_runner build --delete-conflicting-outputs
 ```
 
 ### 3. Run the App
