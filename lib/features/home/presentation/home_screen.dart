@@ -38,6 +38,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           _homeKey,
           _formKey,
           _emptyKey,
+          next ?? '/home', // Pass current route for positioning context
         ).show(context: context);
       }
     });
@@ -99,6 +100,7 @@ TutorialCoachMark _createHomeTutorial(
   GlobalKey homeKey,
   GlobalKey formKey,
   GlobalKey emptyKey,
+  String currentRoute,
 ) {
   late TutorialCoachMark tutorial;
 
@@ -158,6 +160,26 @@ TutorialCoachMark _createHomeTutorial(
     ),
   ];
 
+  // Smart positioning based on current context
+  Widget skipWidget;
+  final currentPath = GoRouterState.of(context).uri.path;
+  
+  if (currentPath == '/form') {
+    // For form page: position at top-right to avoid form fields
+    skipWidget = buildSkipTutorialButton(
+      onSkip: () => tutorial.skip(),
+      top: 120, // Below AppBar
+      right: 20, // Right side to avoid form content
+    );
+  } else {
+    // For home and other pages: use top-center positioning
+    skipWidget = buildSkipTutorialButton(
+      onSkip: () => tutorial.skip(),
+      alignment: Alignment.topCenter,
+      margin: const EdgeInsets.only(top: 80),
+    );
+  }
+
   tutorial = TutorialCoachMark(
     targets: targets,
     colorShadow: Colors.blueAccent,
@@ -172,7 +194,7 @@ TutorialCoachMark _createHomeTutorial(
       ref.read(tutorialProvider.notifier).clear();
       return true;
     },
-    skipWidget: buildSkipTutorialButton(onSkip: () => tutorial.skip()),
+    skipWidget: skipWidget,
     onClickTargetWithTapPosition: (target, tapDetails) {
       tutorial.next();
     },

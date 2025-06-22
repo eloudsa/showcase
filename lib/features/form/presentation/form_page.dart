@@ -136,7 +136,11 @@ TutorialCoachMark _createFormTutorial(
       ref.read(tutorialProvider.notifier).clear();
       return true;
     },
-    skipWidget: buildSkipTutorialButton(onSkip: () => tutorial.skip()),
+    skipWidget: buildSkipTutorialButton(
+      onSkip: () => tutorial.skip(),
+      alignment: Alignment.bottomCenter,
+      margin: const EdgeInsets.only(bottom: 80),
+    ),
     onClickTargetWithTapPosition: (target, tapDetails) {
       if (target.identify == 'field') {
         scrollController.animateTo(
